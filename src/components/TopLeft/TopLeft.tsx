@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 // MUI Imports
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -10,7 +10,7 @@ import { SignIn } from "@phosphor-icons/react/dist/ssr";
 
 // ? Add onClick functions for navigation to Home and LogIn pages.
 
-export default function TopLeft() {
+export function TopLeft() {
   return (
     <Card
       sx={{
@@ -18,6 +18,7 @@ export default function TopLeft() {
         gap: "1rem",
         flexDirection: "column",
         backgroundColor: "#212121",
+        borderRadius: ".5rem",
         px: "2rem",
         py: "2rem",
       }}
