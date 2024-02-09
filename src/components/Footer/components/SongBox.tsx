@@ -9,7 +9,7 @@ import { IconButton } from "@mui/material";
 // Phosphor
 import { Heart } from "@phosphor-icons/react/dist/ssr";
 
-// ! Add props to Song Name and Song Artist
+// ! Add props to Album Cover, Song Name and Song Artist
 
 export function SongBox() {
   const [heartIconState, setHeartIconState] = useState<{
@@ -23,7 +23,7 @@ export function SongBox() {
   const handleHeartIconClick = () => {
     setHeartIconState((prevState) => ({
       weight: prevState.weight === "regular" ? "fill" : "regular",
-      color: prevState.weight === "regular" ? "#800080" : "#B3B3B3",
+      color: prevState.weight === "regular" ? "#9C27B0" : "#B3B3B3",
     }));
   };
 
@@ -33,7 +33,6 @@ export function SongBox() {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        border: "1px solid red",
         gap: "1rem",
       }}
     >
@@ -50,12 +49,11 @@ export function SongBox() {
           Song Artist
         </Typography>
       </Box>
-      <IconButton color="secondary">
+      <IconButton color="secondary" onClick={handleHeartIconClick}>
         <Heart
           size={22}
           color={heartIconState.color}
           weight={heartIconState.weight}
-          onClick={handleHeartIconClick}
         />
       </IconButton>
     </Box>
