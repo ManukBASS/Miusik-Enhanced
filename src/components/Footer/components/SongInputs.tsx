@@ -1,6 +1,6 @@
 "use client";
 // React
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // MUI Imports
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -20,12 +20,42 @@ import {
 
 // ! Add props to Song Duration, pause, prev and next functionality
 
-export function SongInputs() {
+export function SongInputs({ songData }) {
   const [pauseSong, setPauseSong] = useState(false);
+  const audioRef = useRef(new Audio(songData?.mp3_file || ""));
 
-  const handlePause = () => {
+  const handlePausePlay = () => {
+    const audio = audioRef.current;
+
+    if (pauseSong) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+
     setPauseSong(!pauseSong);
   };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleCanPlayThrough = () => {
+      if (!pauseSong) {
+        audio.play();
+      }
+    };
+
+    audio.addEventListener("canplaythrough", handleCanPlayThrough);
+
+    return () => {
+      audio.removeEventListener("canplaythrough", handleCanPlayThrough);
+    };
+  }, [pauseSong, songData]);
+
+  useEffect(() => {
+    audioRef.current.src = songData?.mp3_file || "";
+  }, [songData]);
+
   return (
     <Box
       sx={{
@@ -38,7 +68,7 @@ export function SongInputs() {
         <IconButton sx={{ color: "#B3B3B3" }}>
           <SkipBack size={25} />
         </IconButton>
-        <IconButton sx={{ color: "#B3B3B3" }} onClick={handlePause}>
+        <IconButton sx={{ color: "#B3B3B3" }} onClick={handlePausePlay}>
           {pauseSong ? <PauseCircle size={35} /> : <PlayCircle size={35} />}
         </IconButton>
         <IconButton sx={{ color: "#B3B3B3" }}>
@@ -53,7 +83,7 @@ export function SongInputs() {
         </Typography>
         <Slider size="small" color="secondary" />
         <Typography color="#B3B3B3" variant="subtitle2">
-          0:00
+          {songData?.lenght}
         </Typography>
       </Box>
     </Box>

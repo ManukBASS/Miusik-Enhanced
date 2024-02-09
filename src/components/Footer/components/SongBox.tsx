@@ -11,7 +11,7 @@ import { Heart } from "@phosphor-icons/react/dist/ssr";
 
 // ! Add props to Album Cover, Song Name and Song Artist
 
-export function SongBox() {
+export function SongBox({ songData }) {
   const [heartIconState, setHeartIconState] = useState<{
     weight: "regular" | "fill";
     color: string;
@@ -37,16 +37,16 @@ export function SongBox() {
       }}
     >
       <Avatar
-        src="/broken-image.jpg"
+        src={songData?.album.cover_image}
         variant="rounded"
         sx={{ width: 60, height: 60 }}
       ></Avatar>
       <Box>
-        <Typography variant="subtitle1" color="#B3B3B3">
-          Song Name
-        </Typography>
         <Typography variant="subtitle2" color="#B3B3B3">
-          Song Artist
+          {songData?.name}
+        </Typography>
+        <Typography variant="caption" color="#B3B3B3">
+          {songData?.artists.artist_name}
         </Typography>
       </Box>
       <IconButton color="secondary" onClick={handleHeartIconClick}>
