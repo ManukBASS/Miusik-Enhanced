@@ -59,6 +59,7 @@ export function SongVolume() {
         <Slider
           size="small"
           color="secondary"
+          aria-label="Volume"
           value={volume}
           onChange={handleVolumeChange}
         />

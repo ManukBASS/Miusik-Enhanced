@@ -60,8 +60,8 @@ export function Footer() {
         py: ".5rem",
       }}
     >
-      <SongBox songData={songs[5]} />
-      <SongInputs songData={songs[5]} />
+      <SongBox songData={songs[4]} />
+      <SongInputs songData={songs[4]} />
       <SongVolume />
     </Card>
   );

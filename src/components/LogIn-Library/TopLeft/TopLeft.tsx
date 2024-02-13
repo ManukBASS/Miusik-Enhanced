@@ -16,11 +16,12 @@ export function TopLeft() {
       sx={{
         display: "flex",
         gap: "1rem",
+        width: "auto",
         flexDirection: "column",
-        backgroundColor: "#212121",
+        backgroundColor: "#171717",
         borderRadius: ".5rem",
-        px: "2rem",
-        py: "2rem",
+        px: "1rem",
+        py: "1rem",
       }}
     >
       <Box
