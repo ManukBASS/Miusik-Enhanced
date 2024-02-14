@@ -55,7 +55,7 @@ export function Footer() {
         justifyContent: "space-between",
         backgroundColor: "#000",
         borderRadius: ".5rem",
-        border: "1px solid red",
+        // border: "1px solid red",
         px: "1rem",
         py: ".5rem",
       }}

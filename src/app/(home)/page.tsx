@@ -4,14 +4,26 @@ import Box from "@mui/material/Box";
 
 // Components
 import { LogInLibrary } from "@/components/LogIn-Library/LogInLibrary";
-import { TopLeft } from "@/components/LogIn-Library/TopLeft/TopLeft";
+import { MainView } from "@/components/MainView/MainView";
 import { Footer } from "@/components/Footer/Footer";
-import { YourLibrary } from "@/components/LogIn-Library/YourLibrary/YourLibrary";
+
+// ? Change the Scrollbar of the entire project
 
 export default function Home() {
   return (
-    <Box sx={{ p: ".5rem" }}>
-      <LogInLibrary />
+    <Box
+      sx={{
+        p: ".5rem",
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+      }}
+    >
+      <Box sx={{ display: "flex", gap: ".5rem" }}>
+        <LogInLibrary />
+        <MainView />
+      </Box>
+      <Footer />
     </Box>
   );
 }

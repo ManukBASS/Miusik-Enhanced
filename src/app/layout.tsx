@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Miusik",
   description: "The best music player!",
+  icons: {
+    icon: "./favicon.ico",
+  },
 };
 
 export default function RootLayout({

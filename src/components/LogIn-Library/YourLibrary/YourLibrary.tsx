@@ -13,7 +13,8 @@ export function YourLibrary() {
     <Card
       sx={{
         display: "flex",
-        width: "auto",
+        width: "20rem",
+        // height: "85vh",
         flexDirection: "column",
         backgroundColor: "#171717",
         borderRadius: ".5rem",
