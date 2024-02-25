@@ -11,6 +11,8 @@ import { SongVolume } from "./components/SongVolume";
 import supabase from "../../../supabase/supabaseClient";
 
 // ? Song data is working as intended, music player logic needs some work
+// ? Maybe try using previous Miusik code for songs
+// ! Responsive design
 
 type SongData = {
   id: number;
@@ -60,8 +62,8 @@ export function Footer() {
         py: ".5rem",
       }}
     >
-      <SongBox songData={songs[4]} />
-      <SongInputs songData={songs[4]} />
+      <SongBox songData={songs[7]} />
+      <SongInputs songData={songs[7]} />
       <SongVolume />
     </Card>
   );

@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import React, { useState } from "react";
 // MUI
 import Card from "@mui/material/Card";
@@ -8,10 +8,20 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Zoom from "@mui/material/Zoom";
 
+type BandCardProps = {
+  albumCover: string;
+  albumName: string;
+  albumArtist: string;
+};
+
 // Icons
 import { Play } from "@phosphor-icons/react/dist/ssr";
 
-export function BandCard({ albumCover, albumName, albumArtist }) {
+export function BandCard({
+  albumCover,
+  albumName,
+  albumArtist,
+}: BandCardProps) {
   const [hovered, setHovered] = useState(false);
 
   const handleHover = () => {
@@ -22,14 +32,17 @@ export function BandCard({ albumCover, albumName, albumArtist }) {
     setHovered(false);
   };
 
+  const truncatedArtistName =
+    albumArtist.length > 20 ? `${albumArtist.slice(0, 20)}...` : albumArtist;
+
   return (
     <Card
       sx={{
         backgroundColor: "#171717",
-        width: "11.5rem",
+        width: "100%",
         borderRadius: ".5rem",
         px: "1rem",
-        py: "1rem",
+        py: "0.8rem",
         display: "flex",
         flexDirection: "column",
         position: "relative",
@@ -66,14 +79,14 @@ export function BandCard({ albumCover, albumName, albumArtist }) {
       <Avatar
         src={albumCover}
         variant="rounded"
-        sx={{ width: 150, height: 150, borderRadius: ".5rem" }}
+        sx={{ width: "100%", height: "auto", borderRadius: ".5rem" }}
       />
       <Box sx={{ mt: "1rem", height: "5rem", textAlign: "left" }}>
         <Typography variant="subtitle1" color="#B3B3B3" fontWeight="bold">
           {albumName}
         </Typography>
         <Typography variant="caption" color="#B3B3B3">
-          {albumArtist}
+          {truncatedArtistName}
         </Typography>
       </Box>
     </Card>

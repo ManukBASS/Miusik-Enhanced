@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import React, { useEffect, useState } from "react";
 
 // MUI
@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import { BandCard } from "@/common/BandCard/BandCard";
 // Supabase
 import supabase from "../../../supabase/supabaseClient";
+import { Skeleton } from "@mui/material";
 
 type AlbumData = {
   id: number;
@@ -23,6 +24,7 @@ type AlbumData = {
 export function MainView() {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [albums, setAlbums] = useState<AlbumData[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAlbums = async () => {
@@ -39,6 +41,7 @@ export function MainView() {
         setAlbums(data);
         setFetchError(null);
       }
+      setLoading(false);
     };
 
     fetchAlbums();
@@ -52,7 +55,7 @@ export function MainView() {
         display: "flex",
         flexDirection: "column",
         borderRadius: ".5rem",
-        height: "84vh", // Altura máxima del contenedor
+        height: "84vh",
         overflowY: "auto",
         px: "1rem",
         py: "1rem",
@@ -68,7 +71,25 @@ export function MainView() {
       >
         Welcome !
       </Typography>
-      {albums && (
+      {loading ? (
+        <Grid container spacing={2}>
+          {[...Array(8)].map((_, index) => (
+            <Grid item key={index} xs={12} sm={6} md={3} lg={3} xl={3}>
+              <Skeleton
+                sx={{
+                  width: "11.5rem",
+                  borderRadius: ".5rem",
+                  px: "1rem",
+                  py: "1rem",
+                }}
+                variant="rectangular"
+                animation="wave"
+                height={270}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
         <Grid container spacing={2}>
           {albums.map((album) => (
             <Grid item key={album.id} xs={12} sm={6} md={3} lg={3} xl={3}>

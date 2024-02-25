@@ -17,6 +17,7 @@ export function TopLeft() {
         display: "flex",
         gap: "1rem",
         width: "auto",
+        height: "16vh",
         flexDirection: "column",
         backgroundColor: "#171717",
         borderRadius: ".5rem",
