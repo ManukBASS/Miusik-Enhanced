@@ -63,18 +63,20 @@ export function MainView() {
           "linear-gradient(180deg, rgba(156,39,176,1) 0%, rgba(110,33,123,1) 0%, rgba(89,30,99,1) 2%, rgba(81,29,90,1) 4%, rgba(62,27,68,1) 15%, rgba(43,25,46,1) 43%, rgba(23,23,23,1) 72%)",
       }}
     >
-      <Typography
-        variant="body1"
-        fontWeight="bold"
-        fontSize="1.8rem"
-        mb={"1rem"}
-      >
-        Welcome !
-      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Typography
+          variant="body1"
+          fontWeight="bold"
+          fontSize="1.8rem"
+          mb={"1rem"}
+        >
+          Welcome !
+        </Typography>
+      </Box>
       {loading ? (
         <Grid container spacing={2}>
           {[...Array(8)].map((_, index) => (
-            <Grid item key={index} xs={12} sm={6} md={3} lg={3} xl={3}>
+            <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4}>
               <Skeleton
                 sx={{
                   width: "11.5rem",

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 // MUI Imports
 import Card from "@mui/material/Card";
-// Phosphor
+// Components
 import { SongBox } from "./components/SongBox";
 import { SongInputs } from "@/components/Footer/components/SongInputs";
 import { SongVolume } from "./components/SongVolume";
