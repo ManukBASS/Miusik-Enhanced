@@ -15,7 +15,7 @@ import { FooterMobile } from "./mobile/FooterMobile";
 
 // ? Song data is working as intended, music player logic needs some work
 // ? Maybe try using previous Miusik code for songs
-// ! Responsive design
+// ! Responsive design: FooterMobile re-plays the songs.
 
 type SongData = {
   id: number;
