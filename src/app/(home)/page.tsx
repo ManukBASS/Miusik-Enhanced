@@ -36,7 +36,7 @@ export default function Home() {
         p: ".5rem",
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
+        // height: "100vh",
       }}
     >
       <Box sx={{ display: "flex", gap: ".5rem" }}>

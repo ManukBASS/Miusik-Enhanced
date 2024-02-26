@@ -1,19 +1,26 @@
+// React
 import React, { useState } from "react";
+// MUI
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Slider from "@mui/material/Slider";
 import Tooltip from "@mui/material/Tooltip";
+import { useMediaQuery } from "@mui/material";
+// Phosphor
 import {
   SpeakerLow,
   SpeakerHigh,
   SpeakerX,
   ArrowsOutSimple,
+  Playlist,
 } from "@phosphor-icons/react/dist/ssr";
 
 export function SongVolume() {
   const [muteSong, setMuteSong] = useState(false);
   const [volume, setVolume] = useState(50);
   const [prevVolume, setPrevVolume] = useState(50);
+
+  const isMobile = useMediaQuery("(max-width:975px)");
 
   const handleMute = () => {
     if (muteSong) {
@@ -36,6 +43,7 @@ export function SongVolume() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        width: isMobile ? null : "15rem",
       }}
     >
       <Tooltip
@@ -64,19 +72,22 @@ export function SongVolume() {
         arrow
       >
         <Box>
-          <IconButton sx={{ color: "#B3B3B3" }} onClick={handleMute}>
+          <IconButton color="secondary" onClick={handleMute}>
             {muteSong ? (
-              <SpeakerX size={25} />
+              <SpeakerX size={25} color="#B3B3B3" />
             ) : volume <= 50 ? (
-              <SpeakerLow size={25} />
+              <SpeakerLow size={25} color="#B3B3B3" />
             ) : (
-              <SpeakerHigh size={25} />
+              <SpeakerHigh size={25} color="#B3B3B3" />
             )}
           </IconButton>
         </Box>
       </Tooltip>
-      <IconButton sx={{ color: "#B3B3B3" }}>
-        <ArrowsOutSimple size={25} />
+      <IconButton color="secondary">
+        <Playlist size={25} color="#B3B3B3" />
+      </IconButton>
+      <IconButton color="secondary">
+        <ArrowsOutSimple size={25} color="#B3B3B3" />
       </IconButton>
     </Box>
   );
