@@ -17,11 +17,12 @@ import {
   Shuffle,
   Repeat,
 } from "@phosphor-icons/react/dist/ssr";
+import { SongData } from "../Footer";
 
 // ! Add props to Song Duration, pause, prev and next functionality
 // ! Slider is breaking on mobile
 
-export function SongInputs({ songData }) {
+export function SongInputs({ songData }: { songData: SongData }) {
   const [pauseSong, setPauseSong] = useState(false);
   const audioRef = useRef(new Audio(songData?.mp3_file || ""));
 

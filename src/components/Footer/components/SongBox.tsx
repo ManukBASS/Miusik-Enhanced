@@ -10,10 +10,11 @@ import IconButton from "@mui/material/IconButton";
 import { useMediaQuery } from "@mui/material";
 // Phosphor
 import { Heart } from "@phosphor-icons/react/dist/ssr";
+import { SongData } from "../Footer";
 
 // ! Add props to Album Cover, Song Name and Song Artist
 
-export function SongBox({ songData }) {
+export function SongBox({ songData }: { songData: SongData }) {
   const [heartIconState, setHeartIconState] = useState<{
     weight: "regular" | "fill";
     color: string;

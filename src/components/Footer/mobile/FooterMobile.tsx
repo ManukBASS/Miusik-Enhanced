@@ -19,11 +19,12 @@ import {
   SpeakerX,
 } from "@phosphor-icons/react/dist/ssr";
 import { Tooltip } from "@mui/material";
+import { SongData } from "../Footer";
 // ? Song data is working as intended, music player logic needs some work
 // ? Maybe try using previous Miusik code for songs
 // ! Responsive design
 
-export function FooterMobile({ songData }) {
+export function FooterMobile({ songData }: { songData: SongData }) {
   const [pauseSong, setPauseSong] = useState(false);
   const [muteSong, setMuteSong] = useState(false);
   const [volume, setVolume] = useState(50);
@@ -48,9 +49,15 @@ export function FooterMobile({ songData }) {
     setMuteSong(!muteSong);
   };
 
-  const handleVolumeChange = (event, newValue) => {
-    setVolume(newValue);
-    setMuteSong(newValue === 0);
+  const handleVolumeChange = (
+    event: Event,
+    newValue: number | number[],
+    activeThumb: number
+  ) => {
+    const newVolume = Array.isArray(newValue) ? newValue[0] : newValue;
+
+    setVolume(newVolume);
+    setMuteSong(newVolume === 0);
   };
 
   const handleHeartIconClick = () => {

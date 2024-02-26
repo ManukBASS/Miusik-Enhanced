@@ -1,9 +1,9 @@
 // React
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 // MUI
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import Slider from "@mui/material/Slider";
+import Slider, { SliderTypeMap } from "@mui/material/Slider";
 import Tooltip from "@mui/material/Tooltip";
 import { useMediaQuery } from "@mui/material";
 // Phosphor
@@ -32,9 +32,15 @@ export function SongVolume() {
     setMuteSong(!muteSong);
   };
 
-  const handleVolumeChange = (event, newValue) => {
-    setVolume(newValue);
-    setMuteSong(newValue === 0);
+  const handleVolumeChange = (
+    event: Event,
+    newValue: number | number[],
+    activeThumb: number
+  ) => {
+    const newVolume = Array.isArray(newValue) ? newValue[0] : newValue;
+
+    setVolume(newVolume);
+    setMuteSong(newVolume === 0);
   };
 
   return (
@@ -54,7 +60,7 @@ export function SongVolume() {
             color="secondary"
             aria-labelledby="volume-slider"
             value={volume}
-            onChange={handleVolumeChange}
+            onChange={handleVolumeChange as SliderTypeMap["props"]["onChange"]}
             sx={{ height: "10rem", backgroundColor: "#212121" }}
           />
         }

@@ -17,13 +17,15 @@ import { FooterMobile } from "./mobile/FooterMobile";
 // ? Maybe try using previous Miusik code for songs
 // ! Responsive design: FooterMobile re-plays the songs.
 
-type SongData = {
+export type SongData = {
   id: number;
   artist_id: number;
   album_id: number;
   name: string;
   lenght: string;
   mp3_file: string;
+  artists: { artist_name: string };
+  album: { cover_image: string };
 };
 
 export function Footer() {
