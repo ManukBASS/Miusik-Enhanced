@@ -30,7 +30,13 @@ export function TopLeft() {
           display: "flex",
           alignItems: "center",
           gap: "1rem",
-          ":hover": { cursor: "pointer", bgcolor: "red" },
+          transition: ".2s ease",
+          borderRadius: ".5rem",
+          ":hover": {
+            cursor: "pointer",
+            backgroundColor: "#212121",
+            transition: ".2s ease",
+          },
         }}
       >
         <House size={30} color="#B3B3B3" weight="regular" />
@@ -43,7 +49,13 @@ export function TopLeft() {
           display: "flex",
           alignItems: "center",
           gap: "1rem",
-          ":hover": { cursor: "pointer", bgcolor: "red" },
+          transition: ".2s ease",
+          borderRadius: ".5rem",
+          ":hover": {
+            cursor: "pointer",
+            backgroundColor: "#212121",
+            transition: ".2s ease",
+          },
         }}
       >
         <SignIn size={30} color="#B3B3B3" weight="regular" />

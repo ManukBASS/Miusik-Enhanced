@@ -40,7 +40,7 @@ export function SongBox({ songData }) {
         src={songData?.album.cover_image}
         variant="rounded"
         sx={{ width: 60, height: 60 }}
-      ></Avatar>
+      />
       <Box>
         <Typography variant="subtitle2" color="#B3B3B3">
           {songData?.name}

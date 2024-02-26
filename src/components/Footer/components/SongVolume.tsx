@@ -1,19 +1,14 @@
-"use client";
-// React
-import { useState } from "react";
-// MUI Imports
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Slider from "@mui/material/Slider";
-// Phosphor
+import Tooltip from "@mui/material/Tooltip";
 import {
   SpeakerLow,
   SpeakerHigh,
   SpeakerX,
   ArrowsOutSimple,
 } from "@phosphor-icons/react/dist/ssr";
-
-// ! Add volume Up and Down funcionality
 
 export function SongVolume() {
   const [muteSong, setMuteSong] = useState(false);
@@ -39,34 +34,50 @@ export function SongVolume() {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Box
-        sx={{ width: 220, display: "flex", alignItems: "center", gap: ".5rem" }}
+      <Tooltip
+        title={
+          <Slider
+            size="small"
+            orientation="vertical"
+            color="secondary"
+            aria-labelledby="volume-slider"
+            value={volume}
+            onChange={handleVolumeChange}
+            sx={{ height: "10rem", backgroundColor: "#212121" }}
+          />
+        }
+        placement="top"
+        PopperProps={{
+          sx: {
+            "& .MuiTooltip-tooltip": {
+              backgroundColor: "#212121",
+            },
+            "& .MuiTooltip-arrow": {
+              color: "#212121",
+            },
+          },
+        }}
+        arrow
       >
-        <IconButton sx={{ color: "#B3B3B3" }} onClick={handleMute}>
-          {muteSong ? (
-            <SpeakerX size={25} />
-          ) : volume <= 50 ? (
-            <SpeakerLow size={25} />
-          ) : (
-            <SpeakerHigh size={25} />
-          )}
-        </IconButton>
-        <Slider
-          size="small"
-          color="secondary"
-          aria-label="Volume"
-          value={volume}
-          onChange={handleVolumeChange}
-        />
-        <IconButton sx={{ color: "#B3B3B3" }}>
-          <ArrowsOutSimple size={25} />
-        </IconButton>
-      </Box>
+        <Box>
+          <IconButton sx={{ color: "#B3B3B3" }} onClick={handleMute}>
+            {muteSong ? (
+              <SpeakerX size={25} />
+            ) : volume <= 50 ? (
+              <SpeakerLow size={25} />
+            ) : (
+              <SpeakerHigh size={25} />
+            )}
+          </IconButton>
+        </Box>
+      </Tooltip>
+      <IconButton sx={{ color: "#B3B3B3" }}>
+        <ArrowsOutSimple size={25} />
+      </IconButton>
     </Box>
   );
 }

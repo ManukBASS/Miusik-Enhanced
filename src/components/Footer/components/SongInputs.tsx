@@ -19,6 +19,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 // ! Add props to Song Duration, pause, prev and next functionality
+// ! Slider is breaking on mobile
 
 export function SongInputs({ songData }) {
   const [pauseSong, setPauseSong] = useState(false);
@@ -62,21 +63,27 @@ export function SongInputs({ songData }) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        border: "1px solid red",
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <IconButton sx={{ color: "#B3B3B3" }}>
-          <SkipBack size={25} />
+          <SkipBack size={20} />
         </IconButton>
         <IconButton sx={{ color: "#B3B3B3" }} onClick={handlePausePlay}>
-          {pauseSong ? <PauseCircle size={35} /> : <PlayCircle size={35} />}
+          {pauseSong ? <PauseCircle size={25} /> : <PlayCircle size={25} />}
         </IconButton>
         <IconButton sx={{ color: "#B3B3B3" }}>
-          <SkipForward size={25} />
+          <SkipForward size={20} />
         </IconButton>
       </Box>
       <Box
-        sx={{ width: 550, display: "flex", alignItems: "center", gap: ".8rem" }}
+        sx={{
+          width: 450,
+          display: "flex",
+          alignItems: "center",
+          gap: ".8rem",
+        }}
       >
         <Typography color="#B3B3B3" variant="subtitle2">
           0:00

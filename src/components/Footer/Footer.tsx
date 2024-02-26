@@ -57,13 +57,13 @@ export function Footer() {
         justifyContent: "space-between",
         backgroundColor: "#000",
         borderRadius: ".5rem",
-        // border: "1px solid red",
+        border: "1px solid red",
         px: "1rem",
         py: ".5rem",
       }}
     >
-      <SongBox songData={songs[7]} />
-      <SongInputs songData={songs[7]} />
+      <SongBox songData={songs[8]} />
+      <SongInputs songData={songs[8]} />
       <SongVolume />
     </Card>
   );
