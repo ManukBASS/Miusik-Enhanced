@@ -24,41 +24,41 @@ import { SongData } from "../Footer";
 
 export function SongInputs({ songData }: { songData: SongData }) {
   const [pauseSong, setPauseSong] = useState(false);
-  const audioRef = useRef(new Audio(songData?.mp3_file || ""));
+  // const audioRef = useRef(new Audio(songData?.mp3_file || ""));
 
   const isMobile = useMediaQuery("(max-width:975px)");
 
   const handlePausePlay = () => {
-    const audio = audioRef.current;
+    // const audio = audioRef.current;
 
-    if (pauseSong) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
+    // if (pauseSong) {
+    //   audio.pause();
+    // } else {
+    //   audio.play();
+    // }
 
     setPauseSong(!pauseSong);
   };
 
-  useEffect(() => {
-    const audio = audioRef.current;
+  // useEffect(() => {
+  //   const audio = audioRef.current;
 
-    const handleCanPlayThrough = () => {
-      if (!pauseSong) {
-        audio.play();
-      }
-    };
+  //   const handleCanPlayThrough = () => {
+  //     if (!pauseSong) {
+  //       audio.play();
+  //     }
+  //   };
 
-    audio.addEventListener("canplaythrough", handleCanPlayThrough);
+  //   audio.addEventListener("canplaythrough", handleCanPlayThrough);
 
-    return () => {
-      audio.removeEventListener("canplaythrough", handleCanPlayThrough);
-    };
-  }, [pauseSong, songData]);
+  //   return () => {
+  //     audio.removeEventListener("canplaythrough", handleCanPlayThrough);
+  //   };
+  // }, [pauseSong, songData]);
 
-  useEffect(() => {
-    audioRef.current.src = songData?.mp3_file || "";
-  }, [songData]);
+  // useEffect(() => {
+  //   audioRef.current.src = songData?.mp3_file || "";
+  // }, [songData]);
 
   return (
     <Box
